@@ -6,6 +6,7 @@ public class Perceptron {
 
 	ArrayList<Feature> features;
 	ArrayList<Image> images;
+	Double learningRate = 0.2;
 
 	public Perceptron(ArrayList<Feature> features, ArrayList<Image> images) {
 		this.features = features;
@@ -26,7 +27,7 @@ public class Perceptron {
 					correct ++;
 				}
 				for(Feature f : features) {
-					double nWeight = f.getWeight() + (0.2 * (im.expect() - predict)*f.getValue(im));
+					double nWeight = f.getWeight() + (learningRate * (im.expect() - predict)*f.getValue(im));
 					f.setWeight(nWeight);
 				}
 			}
